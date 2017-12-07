@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour {
     public GameObject Player;
     public Vector3 Offset;
 
-    private void Update() {
+    private void LateUpdate() {
         transform.position = Player.transform.position + Offset;
     }
 }
