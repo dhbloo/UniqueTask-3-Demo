@@ -14,11 +14,11 @@ public class Dialogue2 : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        text = Instantiate(text_prefab);
-        text.transform.SetParent(transform);
-
         speaker = Instantiate(speaker_prefab);
         speaker.transform.SetParent(transform);
+
+        text = Instantiate(text_prefab);
+        text.transform.SetParent(transform);
     }
 
     public void SetText(string _text)

@@ -69,11 +69,11 @@ public class Dialogue2Pool : MonoBehaviour
     {
         if (text_pool.Count > 0)
         {
-            box_obj = Instantiate(box_prefab);
-            box_obj.transform.SetParent(transform);
-
             portrait_obj = Instantiate(portrait_prefab);
             portrait_obj.transform.SetParent(transform);
+
+            box_obj = Instantiate(box_prefab);
+            box_obj.transform.SetParent(transform);
 
             CreateDialogue();
 

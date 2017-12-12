@@ -8,8 +8,6 @@ public class Dialogue1Pool : MonoBehaviour
     public GameObject dialogue_prefab;
 
     private Queue<float> time_pool;
-    private Queue<string> text_pool;
-
     private Queue<GameObject> dialogue_obj_pool;
 
     GameObject dialogue_obj;

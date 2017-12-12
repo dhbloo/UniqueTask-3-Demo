@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TextAbout;
+
 
 public class TextController : MonoBehaviour
 {
@@ -38,5 +40,10 @@ public class TextController : MonoBehaviour
         Destroy(dialogue1_pool_obj);
         Destroy(dialogue2_pool_obj);
         Destroy(tip_pool_obj);
+    }
+
+    public void StartText(int type, int key)
+    {
+
     }
 }
