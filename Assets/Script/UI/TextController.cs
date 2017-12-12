@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TextAbout;
 
 
 public class TextController : MonoBehaviour
