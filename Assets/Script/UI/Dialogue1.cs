@@ -9,13 +9,33 @@ public class Dialogue1 : MonoBehaviour
 
     private Text text;
     private RawImage box;
-    private float time_keep;
+    private float time_keep = 1;
 
-    private float time;
+    private bool inited = false;
+    private TextPool pool;
+
+    private float time = 0;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
+
+    }
+
+    private void Update()
+    {
+        time += Time.deltaTime;
+        if (time > time_keep)
+            Destroy(gameObject);
+    }
+
+    public void Init(TextPool _pool)
+    {
+        if (inited)
+            return;
+
+        pool = _pool;
+
         box = Instantiate(box_prefab);
         box.transform.SetParent(transform);
 
@@ -23,11 +43,8 @@ public class Dialogue1 : MonoBehaviour
         text.transform.SetParent(transform);
 
         time = 0;
-    }
 
-    private void Update()
-    {
-        time += Time.deltaTime;
+        inited = true;
     }
 
     public void SetText(string _text)
@@ -42,7 +59,11 @@ public class Dialogue1 : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(text);
-        Destroy(box);
+        if (inited)
+        {
+            pool.SetActive(true);
+            Destroy(text);
+            Destroy(box);
+        }
     }
 }

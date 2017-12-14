@@ -5,44 +5,51 @@ using System.Collections;
 public class Tip : MonoBehaviour
 {
     public Text text_prefab;
-    public Text title_prefab;
     public RawImage box_prefab;
 
     private Text text;
-    private Text title;
     private RawImage box;
-    private float time_keep;
+    private float time_keep = 1;
 
-    private float time;
+    private bool inited = false;
+    private TextPool pool;
+
+    private float time = 0;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
-        box = Instantiate(box_prefab);
-        box.transform.SetParent(transform);
 
-        title = Instantiate(title_prefab);
-        title.transform.SetParent(transform);
-
-        text = Instantiate(text_prefab);
-        text.transform.SetParent(transform);
-
-        time = 0;
     }
 
     private void Update()
     {
         time += Time.deltaTime;
+        if (time > time_keep)
+            Destroy(gameObject);
+    }
+
+    public void Init(TextPool _pool)
+    {
+        if (inited)
+            return;
+
+        pool = _pool;
+
+        box = Instantiate(box_prefab);
+        box.transform.SetParent(transform);
+
+        text = Instantiate(text_prefab);
+        text.transform.SetParent(transform);
+
+        time = 0;
+
+        inited = true;
     }
 
     public void SetText(string _text)
     {
         text.text = _text;
-    }
-
-    public void SetTitle(string _title)
-    {
-        title.text = _title;
     }
 
     public void SetTime(float _time)
@@ -52,8 +59,11 @@ public class Tip : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(text);
-        Destroy(title);
-        Destroy(box);
+        if (inited)
+        {
+            pool.SetActive(true);
+            Destroy(text);
+            Destroy(box);
+        }
     }
 }
