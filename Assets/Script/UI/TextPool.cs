@@ -41,6 +41,8 @@ public class TextPool : MonoBehaviour
     {
         GameObject obj = Instantiate(dialogue1_prefab);
         obj.transform.SetParent(transform);
+        obj.transform.Translate(transform.position);
+        obj.transform.localScale = new Vector3(1, 1, 1);
         Dialogue1 dialogue1 = obj.GetComponent<Dialogue1>();
         dialogue1.Init(this);
         dialogue1.SetTime(_time);
@@ -53,6 +55,8 @@ public class TextPool : MonoBehaviour
     {
         GameObject obj = Instantiate(dialogue2_prefab);
         obj.transform.SetParent(transform);
+        obj.transform.Translate(transform.position);
+        obj.transform.localScale = new Vector3(1, 1, 1);
         Dialogue2 dialogue2 = obj.GetComponent<Dialogue2>();
         dialogue2.Init(this);
         dialogue2.SetSpeaker(_speaker);
@@ -65,6 +69,8 @@ public class TextPool : MonoBehaviour
     {
         GameObject obj = Instantiate(tip_prefab);
         obj.transform.SetParent(transform);
+        obj.transform.Translate(transform.position);
+        obj.transform.localScale = new Vector3(1, 1, 1);
         Tip tip = obj.GetComponent<Tip>();
         tip.Init(this);
         tip.SetTime(_time);

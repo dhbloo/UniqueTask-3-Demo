@@ -18,6 +18,8 @@ public class TextController : MonoBehaviour
     {
         text_pool_obj = Instantiate(text_pool_prefab);
         text_pool_obj.transform.SetParent(transform.parent);
+        text_pool_obj.transform.Translate(transform.position);
+        text_pool_obj.transform.localScale = new Vector3(1, 1, 1);
         text_pool = text_pool_obj.GetComponent<TextPool>();
 
         key = 0;

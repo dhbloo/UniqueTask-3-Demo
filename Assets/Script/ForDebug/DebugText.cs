@@ -38,7 +38,7 @@ public class DebugText : MonoBehaviour
         }
 
         KeyCode num = KeyCode.Alpha0;
-        for (num = KeyCode.Alpha0; num < KeyCode.Alpha9; num++)
+        for (num = KeyCode.Alpha0; num <= KeyCode.Alpha9; num++)
         {
             if (Input.GetKeyDown(num))
             {
