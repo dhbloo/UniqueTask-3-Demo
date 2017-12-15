@@ -93,6 +93,19 @@ public class TextController : MonoBehaviour
                 text_pool.AddDialogue2("你", "破旧的墙壁，它的基底似乎已经被腐蚀的差不多了。");
                 text_pool.AddTip(tip_time, "腐烂墙壁可以被击破。");
                 break;
+
+            case 11:
+                text_pool.AddDialogue2("你", "哇！这是什么！");
+                text_pool.AddDialogue2("同伴", "找到宝藏啦，这么快！");
+                text_pool.AddDialogue2("你", "不是啦，找宝藏哪有这么简单。");
+                text_pool.AddDialogue2("你", "是一把钥匙啦。");
+                text_pool.AddDialogue2("同伴", "钥匙有什么好惊奇的。");
+                text_pool.AddDialogue2("你", "蠢，刚刚锁了的门你不记得了吗。这一定是那的钥匙。");
+                text_pool.AddDialogue2("同伴", "好哇，你骂我蠢，我不给你守门了，我走了，哼！");
+                text_pool.AddDialogue2("你", "诶，别别，你最好了，别走！");
+                text_pool.AddDialogue2("同伴", "还不快去开门。");
+                text_pool.AddDialogue2("你", "好。");
+                break;
         }
 
         key = 0;
