@@ -39,10 +39,7 @@ public class TextPool : MonoBehaviour
 
     public void AddDialogue1(float _time, string _text)
     {
-        GameObject obj = Instantiate(dialogue1_prefab);
-        obj.transform.SetParent(transform);
-        obj.transform.Translate(transform.position);
-        obj.transform.localScale = new Vector3(1, 1, 1);
+        GameObject obj = Instantiate(dialogue1_prefab, transform);
         Dialogue1 dialogue1 = obj.GetComponent<Dialogue1>();
         dialogue1.Init(this);
         dialogue1.SetTime(_time);
@@ -53,10 +50,7 @@ public class TextPool : MonoBehaviour
 
     public void AddDialogue2(string _speaker, string _text)
     {
-        GameObject obj = Instantiate(dialogue2_prefab);
-        obj.transform.SetParent(transform);
-        obj.transform.Translate(transform.position);
-        obj.transform.localScale = new Vector3(1, 1, 1);
+        GameObject obj = Instantiate(dialogue2_prefab, transform);
         Dialogue2 dialogue2 = obj.GetComponent<Dialogue2>();
         dialogue2.Init(this);
         dialogue2.SetSpeaker(_speaker);
@@ -67,10 +61,7 @@ public class TextPool : MonoBehaviour
 
     public void AddTip(float _time, string _text)
     {
-        GameObject obj = Instantiate(tip_prefab);
-        obj.transform.SetParent(transform);
-        obj.transform.Translate(transform.position);
-        obj.transform.localScale = new Vector3(1, 1, 1);
+        GameObject obj = Instantiate(tip_prefab, transform);
         Tip tip = obj.GetComponent<Tip>();
         tip.Init(this);
         tip.SetTime(_time);

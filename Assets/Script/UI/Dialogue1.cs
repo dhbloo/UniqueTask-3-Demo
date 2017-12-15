@@ -35,16 +35,8 @@ public class Dialogue1 : MonoBehaviour
             return;
 
         pool = _pool;
-
-        box = Instantiate(box_prefab);
-        box.transform.SetParent(transform);
-        box.transform.Translate(transform.position);
-        box.transform.localScale = new Vector3(1, 1, 1);
-
-        text = Instantiate(text_prefab);
-        text.transform.SetParent(transform);
-        text.transform.Translate(transform.position);
-        text.transform.localScale = new Vector3(1, 1, 1);
+        box = Instantiate(box_prefab, transform);
+        text = Instantiate(text_prefab, transform);
 
         time = 0;
 

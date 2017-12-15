@@ -6,6 +6,9 @@ public class TextController : MonoBehaviour
 {
     public GameObject text_pool_prefab;
 
+    public int width = 640;
+    public int height = 360;
+
     private GameObject text_pool_obj;
     private TextPool text_pool;
 
@@ -16,10 +19,10 @@ public class TextController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        text_pool_obj = Instantiate(text_pool_prefab);
-        text_pool_obj.transform.SetParent(transform.parent);
-        text_pool_obj.transform.Translate(transform.position);
-        text_pool_obj.transform.localScale = new Vector3(1, 1, 1);
+        text_pool_obj = Instantiate(text_pool_prefab, transform.parent);
+        Vector2 size = GetComponentInParent<RectTransform>().sizeDelta;
+        text_pool_obj.transform.localScale = new Vector3(size.x / width, size.y / height, 1);
+
         text_pool = text_pool_obj.GetComponent<TextPool>();
 
         key = 0;

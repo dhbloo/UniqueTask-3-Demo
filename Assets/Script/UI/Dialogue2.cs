@@ -37,26 +37,10 @@ public class Dialogue2 : MonoBehaviour
             return;
 
         pool = _pool;
-
-        portrait = Instantiate(portrait_prefab);
-        portrait.transform.SetParent(transform);
-        portrait.transform.Translate(transform.position);
-        portrait.transform.localScale = new Vector3(1, 1, 1);
-
-        box = Instantiate(box_prefab);
-        box.transform.SetParent(transform);
-        box.transform.Translate(transform.position);
-        box.transform.localScale = new Vector3(1, 1, 1);
-
-        speaker = Instantiate(speaker_prefab);
-        speaker.transform.SetParent(transform);
-        speaker.transform.Translate(transform.position);
-        speaker.transform.localScale = new Vector3(1, 1, 1);
-
-        text = Instantiate(text_prefab);
-        text.transform.SetParent(transform);
-        text.transform.Translate(transform.position);
-        text.transform.localScale = new Vector3(1, 1, 1);
+        portrait = Instantiate(portrait_prefab, transform);
+        box = Instantiate(box_prefab, transform);
+        speaker = Instantiate(speaker_prefab, transform);
+        text = Instantiate(text_prefab, transform);
 
         // Set Game Stop
 
