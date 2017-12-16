@@ -17,7 +17,7 @@ public class Dialogue2 : MonoBehaviour
     private bool inited = false;
     private TextPool pool;
 
-    private TextPauseGame text_pause_game;
+    private GameController game_controller;
 
     public KeyCode key_continue = KeyCode.E;
 
@@ -30,7 +30,7 @@ public class Dialogue2 : MonoBehaviour
     private void Update()
     {
         // Keep Game Pause
-        text_pause_game.PauseGameKeep();
+        game_controller.Pause();
 
         if (Input.GetKeyDown(key_continue))
             Destroy(gameObject);
@@ -47,7 +47,7 @@ public class Dialogue2 : MonoBehaviour
         speaker = Instantiate(speaker_prefab, transform);
         text = Instantiate(text_prefab, transform);
 
-        text_pause_game = GameObject.FindGameObjectWithTag("TextPauseGame").GetComponent<TextPauseGame>();
+        game_controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
         inited = true;
     }
@@ -73,7 +73,7 @@ public class Dialogue2 : MonoBehaviour
             Destroy(portrait);
 
             // Set Game Continue
-            text_pause_game.PauseGameTime(0.5f);
+            game_controller.Pause(0.5f);
         }
     }
 }
