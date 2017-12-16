@@ -57,7 +57,7 @@ public class Dialogue1 : MonoBehaviour
     {
         if (inited)
         {
-            pool.SetActive(true);
+            pool.Continue();
             Destroy(text);
             Destroy(box);
         }

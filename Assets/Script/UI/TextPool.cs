@@ -32,9 +32,9 @@ public class TextPool : MonoBehaviour
         }
     }
 
-    public void SetActive(bool _active)
+    public void Continue()
     {
-        active = _active;
+        active = true;
     }
 
     public void AddDialogue1(float _time, string _text)

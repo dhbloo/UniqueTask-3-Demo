@@ -57,7 +57,7 @@ public class Tip : MonoBehaviour
     {
         if (inited)
         {
-            pool.SetActive(true);
+            pool.Continue();
             Destroy(text);
             Destroy(box);
         }

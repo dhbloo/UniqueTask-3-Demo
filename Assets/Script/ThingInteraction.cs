@@ -28,7 +28,7 @@ public class ThingInteraction : MonoBehaviour
         if (active && Input.GetKeyDown(KeyCode.E))
         {
             GameObject.FindGameObjectWithTag("TextController").GetComponent<TextController>().StartText(text_key);
-            if(text_key == destroy_text_key)
+            if (text_key == destroy_text_key)
                 Destroy(gameObject);
         }
     }
