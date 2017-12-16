@@ -13,18 +13,18 @@ public class CharacterInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ;
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Thing")
-            other.GetComponent<ThingInteraction>().SetActive(true);
+            other.GetComponent<InteractionBase>().SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Thing")
-            other.GetComponent<ThingInteraction>().SetActive(false);
+            other.GetComponent<InteractionBase>().SetActive(false);
     }
 }

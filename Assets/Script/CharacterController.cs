@@ -7,13 +7,20 @@ public class CharacterController : MonoBehaviour {
     public float RotateSpeed;
     private Animator animator;
 
+    private GameController game_controller;
+
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
+
+        game_controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (game_controller.IsPause())
+            return;
+
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
         float inputRun = Input.GetAxis("Run");
