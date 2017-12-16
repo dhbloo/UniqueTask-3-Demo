@@ -4,6 +4,7 @@ using System.Collections;
 public class InteractionBase : MonoBehaviour
 {
     protected bool active = false;
+    protected bool auto_interaction = false;
 
     protected GameController game_controller;
     protected TextController text_controller;
@@ -29,7 +30,7 @@ public class InteractionBase : MonoBehaviour
         if (game_controller.IsPause())
             return;
 
-        if (active && InteractionDemand())
+        if (auto_interaction || (active && InteractionDemand()))
             Interaction();
     }
     

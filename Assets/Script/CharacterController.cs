@@ -19,7 +19,11 @@ public class CharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (game_controller.IsPause())
+        {
+            animator.SetFloat("BlendX", 0);
+            animator.SetFloat("BlendY", 0);
             return;
+        }
 
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");

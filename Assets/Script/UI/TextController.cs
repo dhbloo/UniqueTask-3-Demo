@@ -5,12 +5,15 @@ using System.Collections;
 public class TextController : MonoBehaviour
 {
     public GameObject text_pool_prefab;
+    public GameObject text_pause_game_prefab;
 
     public int width = 640;
     public int height = 360;
 
     private GameObject text_pool_obj;
     private TextPool text_pool;
+    private GameObject text_pause_game_obj;
+    private TextPauseGame text_pause_game;
 
     private int key;
 
@@ -24,6 +27,9 @@ public class TextController : MonoBehaviour
         text_pool_obj.transform.localScale = new Vector3(size.x / width, size.y / height, 1);
 
         text_pool = text_pool_obj.GetComponent<TextPool>();
+
+        text_pause_game_obj = Instantiate(text_pause_game_prefab, transform.parent);
+        text_pause_game = text_pause_game_obj.GetComponent<TextPauseGame>();
 
         key = 0;
     }

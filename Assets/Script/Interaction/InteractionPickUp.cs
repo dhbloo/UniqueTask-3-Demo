@@ -18,10 +18,14 @@ public class InteractionPickUp : InteractionBase
         GameState game_state = game_controller.GetState();
         if (game_state <= game_state_before_pick_up)
         {
+            auto_interaction = true;
             text_controller.StartText(text_key);
             game_controller.SetState(game_state_after_pick_up);
         }
         else if (game_state >= game_state_after_pick_up)
+        {
+            auto_interaction = false;
             Destroy(gameObject);
+        }
     }
 }
