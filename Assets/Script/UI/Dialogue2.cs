@@ -43,6 +43,7 @@ public class Dialogue2 : MonoBehaviour
         text = Instantiate(text_prefab, transform);
 
         // Set Game Stop
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().Pause();
 
         inited = true;
     }
@@ -68,6 +69,7 @@ public class Dialogue2 : MonoBehaviour
             Destroy(portrait);
 
             // Set Game Continue
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().Continue();
         }
     }
 }
