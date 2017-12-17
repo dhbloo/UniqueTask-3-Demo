@@ -4,44 +4,52 @@ using System.Collections;
 public class InteractionBase : MonoBehaviour
 {
     protected bool active = false;
-    protected bool auto_interaction = false;
 
     protected GameController game_controller;
-    protected TextController text_controller;
-    
-    protected GameObject cube_E;
-    public Vector3 cube_E_offset;
+    protected CharacterInteraction character_interaction;
+
+    public string interaction_name;
+
+    public string[] demand_histories;
+    public string[] demand_no_histories;
+
 
     // Use this for initialization
-    protected void Start()
+    protected virtual void Start()
     {
         game_controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        text_controller = GameObject.FindGameObjectWithTag("TextController").GetComponent<TextController>();
-
-        cube_E = Instantiate(GameObject.FindGameObjectWithTag("CubeE"));
-        cube_E.transform.SetParent(transform);
-        cube_E.transform.localPosition = cube_E_offset;
-        cube_E.SetActive(false);
+        character_interaction = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInteraction>();
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected virtual void Update()
     {
         if (game_controller.IsPause())
             return;
 
-        if (auto_interaction || (active && InteractionDemand()))
-            Interaction();
+        if (active && InteractionDemand())
+        {
+            bool demand = true;
+            foreach(string demand_history in demand_histories)
+                demand &= character_interaction.HaveHistory(demand_history);
+            foreach (string demand_no_history in demand_no_histories)
+                demand &= !character_interaction.HaveHistory(demand_no_history);
+            if (demand)
+            {
+                enabled = false;
+                Interaction();
+                character_interaction.AddHistory(interaction_name);
+            }
+        }
     }
     
-    protected void OnDestroy()
+    protected virtual void OnDestroy()
     {
-        Destroy(cube_E);
+        
     }
 
-    public void SetActive(bool _active)
+    public virtual void SetActive(bool _active)
     {
-        cube_E.SetActive(_active);
         active = _active;
     }
 
@@ -52,6 +60,6 @@ public class InteractionBase : MonoBehaviour
 
     protected virtual void Interaction()
     {
-        Destroy(gameObject);
+        ;
     }
 }
