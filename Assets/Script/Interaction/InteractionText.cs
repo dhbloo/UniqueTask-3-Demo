@@ -21,4 +21,9 @@ public class InteractionText : InteractionBase
         if (repeat)
             enabled = true;
     }
+
+    protected override bool RepeatDemand()
+    {
+        return repeat;
+    }
 }

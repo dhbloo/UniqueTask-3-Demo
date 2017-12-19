@@ -7,6 +7,8 @@ public class CharacterInteraction : MonoBehaviour
     List<string> histories;
     List<string> things;
 
+    public string[] interaction_tags;
+
     // Use this for initialization
     void Start()
     {
@@ -22,16 +24,24 @@ public class CharacterInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Thing")
-            foreach(InteractionBase interaction in other.GetComponents<InteractionBase>())
-                interaction.SetActive(true);
+        foreach (string tag in interaction_tags)
+            if (other.tag == tag)
+            {
+                foreach (InteractionBase interaction in other.GetComponents<InteractionBase>())
+                    interaction.SetActive(true);
+                return;
+            }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Thing")
-            foreach (InteractionBase interaction in other.GetComponents<InteractionBase>())
-                interaction.SetActive(false);
+        foreach (string tag in interaction_tags)
+            if (other.tag == tag)
+            {
+                foreach (InteractionBase interaction in other.GetComponents<InteractionBase>())
+                    interaction.SetActive(false);
+                return;
+            }
     }
 
     public void PickUpThing(string _thing)

@@ -32,13 +32,22 @@ public class InteractionBase : MonoBehaviour
             bool demand = true;
             foreach(string demand_history in demand_histories)
                 demand &= character_interaction.HaveHistory(demand_history);
-            foreach (string demand_no_history in demand_no_histories)
-                demand &= !character_interaction.HaveHistory(demand_no_history);
             if (demand)
             {
-                enabled = false;
+                foreach (string demand_no_history in demand_no_histories)
+                    demand &= !character_interaction.HaveHistory(demand_no_history);
+                if(!demand)
+                {
+                    enabled = false;
+                    character_interaction.AddHistory(interaction_name);
+                    return;
+                }
                 Interaction();
-                character_interaction.AddHistory(interaction_name);
+                if (!RepeatDemand())
+                {
+                    enabled = false;
+                    character_interaction.AddHistory(interaction_name);
+                }
             }
         }
     }
@@ -61,5 +70,10 @@ public class InteractionBase : MonoBehaviour
     protected virtual void Interaction()
     {
         ;
+    }
+
+    protected virtual bool RepeatDemand()
+    {
+        return false;
     }
 }

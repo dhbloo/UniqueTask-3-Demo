@@ -15,10 +15,10 @@ public class WallBreak : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.X))
-            breakWall();
+            BreakWall();
     }
 
-    void breakWall() {
+    public void BreakWall() {
         foreach (Transform piece in pieces) {
             if (piece == transform) continue;
             Rigidbody rb = piece.GetComponent<Rigidbody>();
